@@ -1,0 +1,28 @@
+{% extends 'funny/base.html' %}
+
+{% block css_extends %}
+    <link href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" />
+{% endblock %}
+
+{% block content %}
+    <table class="table table-striped datatable">
+        <thead>
+        <tr>
+            <td>Имя</td>
+            <td>Фамилия</td>
+            <td>Статус</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for object in object_list %}
+            {% if object.first_name != 'Олег' %}
+                <tr>
+                    <td>{{ object.first_name }}</td>
+                    <td>{{ object.last_name }}</td>
+                    <td>активен</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

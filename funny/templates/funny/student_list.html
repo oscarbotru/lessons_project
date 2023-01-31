@@ -1,0 +1,42 @@
+{% extends 'funny/base.html' %}
+
+{% block css_extends %}
+    <link href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"/>
+{% endblock %}
+
+{% block content %}
+    <table class="table table-striped datatable">
+        <thead>
+        <tr>
+            <td>Имя</td>
+            <td>Фамилия</td>
+            <td>Статус</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for object in object_list %}
+            <tr>
+                <td>
+                    <a class="btn btn-outline-success w-50" href="{% url 'funny:detail' object.pk %}">
+                        #{{ object.pk }}
+                    </a>
+                </td>
+                <td>{{ object.first_name }}</td>
+                <td>{{ object.last_name }}</td>
+                <td>
+                    {{ object.get_status_display|title }}
+                    {% if object.status == 'active' %}
+                        <a class="btn btn-danger" href="{% url 'funny:status' object.pk %}">X</a>
+                    {% else %}
+                        <a class="btn btn-success" href="{% url 'funny:status' object.pk %}">V</a>
+                    {% endif %}
+                </td>
+                <td>
+                    <a class="btn btn-info" href="{% url 'funny:update' object.pk %}">Update</a>
+                    <a class="btn btn-danger" href="{% url 'funny:delete' object.pk %}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,18 @@
+[
+  {
+    "model": "funny.student",
+    "fields": {
+      "first_name": "Олег",
+      "last_name": "Маслов",
+      "avatar": ""
+    }
+  },
+  {
+    "model": "funny.student",
+    "fields": {
+      "first_name": "Никита",
+      "last_name": "Евсюков",
+      "avatar": ""
+    }
+  }
+]
